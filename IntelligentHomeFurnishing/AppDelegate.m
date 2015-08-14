@@ -178,7 +178,7 @@
             //[alertView show];
             //执行相应方法
 //            [_integratedDeviceViewController reloadHeaderView];
-            [_integratedDeviceViewController reloadHeartBeatData:[userInfo objectForKey:@"heartbeatInfo"]];
+            [_integratedDeviceViewController reloadHeartBeatData:[[userInfo objectForKey:@"heartbeatInfo"] JSONValue]];
             
         }
         

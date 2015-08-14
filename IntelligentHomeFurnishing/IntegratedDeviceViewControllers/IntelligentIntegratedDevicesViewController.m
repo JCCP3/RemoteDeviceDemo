@@ -72,9 +72,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(closeNotification:)
                                                  name:UIApplicationDidEnterBackgroundNotification object:nil];
-    
-    _timer = [NSTimer timerWithTimeInterval:5 target:self selector:@selector(doSomething) userInfo:nil repeats:YES];
 }
+
 
 - (void)doSomething
 {
@@ -82,6 +81,7 @@
     if(canRefresh){
         timeIsValid = YES;
     }else{
+        timeIsValid = NO;
         canRefresh = YES;
     }
 }
@@ -136,6 +136,8 @@
     [self showLoadingMessage:@"加载中..."];
     
     [self loadMyHomeIntegratedDevices];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(doSomething) userInfo:nil repeats:YES];
+    
     
 }
 
@@ -146,7 +148,7 @@
     
     [_integratedDeviceNameLabel setFrame:CGRectMake(_integratedDeviceNameLabel.frame.origin.x, _integratedDeviceNameLabel.frame.origin.y, _integratedDeviceNameLabel.bounds.size.width, _integratedDeviceNameLabel.bounds.size.height)];
     
-    CGFloat spaceWidth = (DEVICE_AVALIABLE_WIDTH-20-35-_integratedDeviceNameLabel.bounds.size.width-_insideTempLabel.bounds.size.width-_insideWetLabel.bounds.size.width)/2;
+    CGFloat spaceWidth = (DEVICE_AVALIABLE_WIDTH-5-35-_integratedDeviceNameLabel.bounds.size.width-_insideTempLabel.bounds.size.width-_insideWetLabel.bounds.size.width)/2;
     
     [_insideTempLabel setFrame:CGRectMake(_integratedDeviceNameLabel.frame.origin.x+_integratedDeviceNameLabel.bounds.size.width+spaceWidth, _insideTempLabel.frame.origin.y, _insideTempLabel.bounds.size.width, _insideTempLabel.bounds.size.height)];
     
@@ -656,12 +658,10 @@
     if (canRefresh && timeIsValid) {
         
         NSDictionary *heartBeatInfoDic = dic;
-        
-        NSLog(@"可以请求啦");
        
         for (int i=0; i<[_aryIntegratedDevices count]; i++) {
             IntegratedDeviceInfo *deviceInfo = [_aryIntegratedDevices objectAtIndex:i];
-            if ([deviceInfo.integratedDeviceID isEqual:[heartBeatInfoDic objectForKey:@"cemterControllerlId"]]){
+            if ([deviceInfo.integratedDeviceID isEqual:[NSString stringWithFormat:@"%d",[[heartBeatInfoDic objectForKey:@"centerControllerId"] intValue]]]){
                 //刷新
                 deviceInfo.integratedDeviceCurrentDianYa = [NSString stringWithFormat:@"%.2f",[[heartBeatInfoDic objectForKey:@"esVoltage"] floatValue]];
                 deviceInfo.integratedDeviceOutsideTemp = [NSString stringWithFormat:@"%.2f",[[heartBeatInfoDic objectForKey:@"temperature2"] floatValue]];
@@ -669,6 +669,7 @@
                 deviceInfo.integratedDeviceInsideTemp = [NSString stringWithFormat:@"%.2f",[[heartBeatInfoDic objectForKey:@"temperature"] floatValue]];
                 deviceInfo.integratedDeviceInsideWet = [NSString stringWithFormat:@"%.2f",[[heartBeatInfoDic objectForKey:@"hnmidity"] floatValue]];
                  _pageIndex = i;
+                [_tableView setContentOffset:CGPointMake(0, _pageIndex*8*((DEVICE_AVALIABLE_HEIGHT-64-52-50)/8)) animated:YES];
                 [self layoutIntelligentView];
             }
            

@@ -1018,7 +1018,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jin Yang Wang (9HJCK7NBRK)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jin Yang Wang (9HJCK7NBRK)";
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1031,7 +1031,7 @@
 					"$(PROJECT_DIR)/IntelligentHomeFurnishing/Tools/JPush",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4a3e6817-c3f6-4c59-b4ce-1a6c9f2bc224";
+				PROVISIONING_PROFILE = "7be9b5ff-de41-4754-9f8a-b1754be9929e";
 			};
 			name = Debug;
 		};
@@ -1040,7 +1040,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jin Yang Wang (9HJCK7NBRK)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jin Yang Wang (9HJCK7NBRK)";
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1053,7 +1053,7 @@
 					"$(PROJECT_DIR)/IntelligentHomeFurnishing/Tools/JPush",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4a3e6817-c3f6-4c59-b4ce-1a6c9f2bc224";
+				PROVISIONING_PROFILE = "7be9b5ff-de41-4754-9f8a-b1754be9929e";
 			};
 			name = Release;
 		};

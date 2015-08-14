@@ -47,6 +47,7 @@
     NSTimer *_timer;
 }
 
+
 - (IBAction)onClickChooseNextIntegratedDevice:(id)sender;
 
 -(void)reloadCurrentTableView:(NSDictionary *)tempDic;
